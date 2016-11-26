@@ -7,7 +7,9 @@ You can view this project at [ABCD](https://rolandreed.cn/abcd)
 
 ## SETUP
 ```npm install``` Install dependencies.
+
 ```npm run dev``` Run a webpack dev-server with hot-reload on localhost:8080
+
 ```npm run build``` Build project to /dist.
 
 ## CHANGELOG
