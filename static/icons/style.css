@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'abcd';
+  src:
+    url('fonts/abcd.ttf?8zxm1k') format('truetype'),
+    url('fonts/abcd.woff?8zxm1k') format('woff'),
+    url('fonts/abcd.svg?8zxm1k#abcd') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'abcd' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-back:before {
+  content: "\e5c4";
+}
+.icon-help:before {
+  content: "\e8fd";
+}
+.icon-about:before {
+  content: "\e88f";
+}
+.icon-menu:before {
+  content: "\e5d2";
+}
+.icon-pause:before {
+  content: "\e034";
+}
+.icon-play:before {
+  content: "\e037";
+}
+.icon-latest:before {
+  content: "\e80b";
+}
+.icon-archive:before {
+  content: "\e1c2";
+}
+.icon-search:before {
+  content: "\e8b6";
+}
+.icon-settings:before {
+  content: "\e8b8";
+}
+
