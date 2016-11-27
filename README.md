@@ -16,6 +16,7 @@ You can view this project at [ABCD](https://rolandreed.cn/abcd)
 - 2016/11/27
 	1. Optimize source code.
 	2. Add browser tips and download links in ABOUT page.
+	3. Minor bug fixed.
 - 2016/11/26
 	First release.
 

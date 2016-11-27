@@ -86,7 +86,7 @@
 				}
 			},
 			loadNewsList(sourceId, month) {
-				qwest.get(`/abcd/archive/${sourceId}/${month}`, {timeout: config.timeout})
+				qwest.get(`/abcd/archive/${sourceId}/${month}`, null, {timeout: config.timeout})
 					.then((xhr, res) => {
 						this.loaded = true;
 						this.ifShowMessage = false;
