@@ -12,6 +12,7 @@
 <script>
 	import archiveListItem from './archive-list-item';
 	import qwest from 'qwest';
+	import config from '../config/config';
 
 	export default {
 		name: 'archive',
@@ -27,7 +28,7 @@
 			window.eventHub.$on('changesource', sourceId => {
 				if (this.currentView === 'archive') {
 					this.ifShowMessage = true;
-					this.loadMessage = 'Loading archive infomation...';
+					this.loadMessage = config.msg.archiveLoading;
 					this.sourceId = sourceId;
 					this.loadEarliestMonth();
 				}
@@ -40,7 +41,7 @@
 				sourceId: 0,
 				currentView: 'archive',
 				ifShowMessage: true,
-				loadMessage: 'Loading archive infomation...',
+				loadMessage: config.msg.archiveLoading,
 				archiveList: []
 			};
 		},
@@ -49,11 +50,11 @@
 				this.archiveList = [];
 
 				qwest.get(`/abcd/archive/earliestMonth/${this.sourceId}`, null, {
-						timeout: 3000
+						timeout: config.timeout
 					})
 					.then((xhr, res) => {
 						if (!res.date) {
-							this.loadMessage = 'Sorry, no archive found.';
+							this.loadMessage = config.msg.noArchive;
 							this.ifShowMessage = true;
 							return;
 						}
@@ -97,7 +98,7 @@
 					})
 					.catch(() => {
 						this.ifShowMessage = true;
-						this.loadMessage = 'No network.';
+						this.loadMessage = config.msg.networkError;
 					});
 			}
 		}

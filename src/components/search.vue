@@ -15,6 +15,7 @@
 <script>
 	import newsList from './news-list';
 	import qwest from 'qwest';
+	import config from '../config/config';
 
 	export default {
 		name: 'search',
@@ -47,8 +48,8 @@
 				changed: false,
 				isLoading: false,
 				newsList: [],
-				loadMoreMessage: 'Load More',
-				loadMessage: 'Type keywords to search.'
+				loadMoreMessage: config.msg.loadMore,
+				loadMessage: config.msg.searchHint
 			};
 		},
 		methods: {
@@ -63,7 +64,7 @@
 					this.offset = 0;
 				}
 
-				this.loadMessage = 'Searching...Please wait for a moment';
+				this.loadMessage = config.msg.searching;
 				this.ifShowMessage = true;
 				this.newsList = [];
 				this.changed = false;
@@ -73,7 +74,7 @@
 						q: this.q,
 						offset: this.offset
 					}, {
-						timeout: 10000
+						timeout: config.timeout
 					})
 					.then((xhr, res) => {
 						if (res.code === 0) {
@@ -82,16 +83,16 @@
 								this.ifShowMessage = false;
 								this.ifShowLoadMore = true;
 							} else {
-								this.loadMessage = 'No news found.';
+								this.loadMessage = config.noNewsFound;
 								this.ifShowLoadMore = false;
 							}
 						} else {
-							this.loadMessage = 'Server error, please try again later';
+							this.loadMessage = config.msg.networkError;
 							this.ifShowMessage = true;
 						}
 					})
 					.catch(() => {
-						this.loadMessage = 'No network.';
+						this.loadMessage = msg.config.networkError;
 					});
 			},
 			loadMore() {
@@ -99,29 +100,31 @@
 					return;
 				}
 				this.isLoading = true;
-				this.loadMoreMessage = 'Loading...';
+				this.loadMoreMessage = config.msg.networkError;
 				this.offset = this.offset + 25;
 
 				qwest.get('/abcd/search', {
 						q: this.q,
 						offset: this.offset
+					}, {
+						timeout: config.timeout
 					})
 					.then((xhr, res) => {
 						if (res.code === 0){
 							if (res.news.length > 0) {
 								this.newsList = this.newsList.concat(res.news);
-								this.loadMoreMessage = 'Load More';
+								this.loadMoreMessage = config.msg.loadMore;
 							} else {
-								this.loadMoreMessage = 'No more news.';
+								this.loadMoreMessage = config.noNewsFound;
 								this.isLoading = true;
 							}
 						} else {
-							this.loadMessage = 'Server error, please try again later';
+							this.loadMessage = config.networkError;
 							this.ifShowMessage = true;
 						}
 					})
 					.catch(() => {
-						this.loadMoreMessage = 'No network.';
+						this.loadMoreMessage = config.networkError;
 					})
 					.complete(() => {
 						this.isLoading = false;

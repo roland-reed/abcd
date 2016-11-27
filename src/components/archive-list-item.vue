@@ -16,6 +16,7 @@
 <script>
 	import newsList from './news-list';
 	import qwest from 'qwest';
+	import config from '../config/config';
 
 	export default {
 		name: 'archive-list-item',
@@ -28,7 +29,7 @@
 				newsList: [],
 				loaded: false,
 				ifShowMessage: true,
-				loadMessage: 'Loading news...',
+				loadMessage: config.msg.newsLoading,
 				monthLabelFloat: false
 			};
 		},
@@ -85,7 +86,7 @@
 				}
 			},
 			loadNewsList(sourceId, month) {
-				qwest.get(`/abcd/archive/${sourceId}/${month}`)
+				qwest.get(`/abcd/archive/${sourceId}/${month}`, {timeout: config.timeout})
 					.then((xhr, res) => {
 						this.loaded = true;
 						this.ifShowMessage = false;
@@ -93,13 +94,13 @@
 						if (res.code === 0 && res.news.length > 0) {
 							this.newsList = res.news;
 						} else {
-							this.loadMessage = 'There seems to be no news have been saved this month.';
+							this.loadMessage = config.msg.archiveNoNews;
 							this.ifShowMessage = true;
 						}
 					})
 					.catch(() => {
 						this.ifShowMessage = true;
-						this.loadMessage = 'No network.';
+						this.loadMessage = config.msg.networkError;
 					});
 			},
 		}

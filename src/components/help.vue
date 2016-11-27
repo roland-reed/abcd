@@ -15,7 +15,7 @@
 		<section>
 			<h3>how to use?</h3>
 			<p>
-				Every news has a relevant audio, you can play it by simply tapping the <b><i>PLAY AUDIO</i></b> button.
+				Every news has a relevant audio, you can play it by simply tapping the <b>PLAY AUDIO</b> button.
 			</p>
 			<p>
 				If a news is bilingual, tap or click on the passage will toggle between English and Chinese.

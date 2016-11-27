@@ -14,6 +14,7 @@
 <script>
 	import newsList from './news-list';
 	import qwest from 'qwest';
+	import config from '../config/config';
 
 	export default {
 		name: 'latest',
@@ -52,8 +53,8 @@
 				viewName: 'latest',
 				ifShowMessage: true,
 				ifShowLoadMore: false,
-				loadMessage: 'Loading...',
-				loadMoreMessage: 'Load More',
+				loadMessage: config.msg.loading,
+				loadMoreMessage: config.loadMore,
 				isLoading: false,
 				sourceId: 0,
 				newsList: []
@@ -65,26 +66,26 @@
 				this.ifShowLoadMore = false;
 
 				qwest.get(`/abcd/latest/${sourceId}`, null, {
-						timeout: 10000
+						timeout: config.timeout
 					})
 					.then((xhr, res) => {
 						if (res.code === 0) {
 							this.ifShowMessage = false;
 							this.newsList = res.news;
 							this.ifShowLoadMore = true;
-							window.eventHub.$emit('loaded');
 						} else {
-							this.loadMessage = 'Server error, please try agian later.';
+							this.loadMessage = config.msg.networkError;
 							this.ifShowMessage = true;
 						}
 					})
 					.catch(() => {
+						this.loadMessage = config.networkError;
 						this.ifShowMessage = true;
-						this.loadMessage = 'No network.';
 						this.ifShowLoadMore = false;
 					})
 					.complete(() => {
 						this.isLoading = false;
+						window.eventHub.$emit('loaded');
 					});
 			},
 			loadMore() {
@@ -92,27 +93,29 @@
 					return;
 				}
 				this.isLoading = true;
-				this.loadMoreMessage = 'Loading...';
+				this.loadMoreMessage = config.msg.loading;
 
 				qwest.get(`/abcd/latest/${this.sourceId}`, {
 						offset: this.newsList.length
+					}, {
+						timeout: config.timeout
 					})
 					.then((xhr, res) => {
 						if (res.code === 0) {
 							if (res.news.length > 0) {
 								this.newsList = this.newsList.concat(res.news);
-								this.loadMoreMessage = 'Load More';
+								this.loadMoreMessage = config.msg.loadMore;
 							} else {
-								this.loadMoreMessage = 'No more news.';
+								this.loadMoreMessage = config.msg.noMoreNews;
 								this.isLoading = true;
 							}
 						} else {
-							this.loadMessage = 'Server error, please try agian later.';
+							this.loadMessage = config.msg.networkError;
 							this.ifShowMessage = true;
 						}
 					})
 					.catch(() => {
-						this.loadMoreMessage = 'No network.';
+						this.loadMoreMessage = config.msg.networkError;
 					})
 					.complete(() => {
 						this.isLoading = false;
