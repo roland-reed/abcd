@@ -13,6 +13,8 @@ You can view this project at [ABCD](https://rolandreed.cn/abcd)
 ```npm run build``` Build project to /dist.
 
 ## CHANGELOG
+- 2016/11/28
+	1. Add ```_target``` attribute to browsers' link.
 - 2016/11/27
 	1. Optimize source code.
 	2. Add browser tips and download links in ABOUT page.

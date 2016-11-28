@@ -12,13 +12,13 @@
 				Here are some browsers' download links:
 				<ul>
 					<li>
-						<b>Google Chrome:</b> <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome</a>
+						<b>Google Chrome:</b> <a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank">Google Chrome</a>
 					</li>
 					<li>
-						<b>Mozilla Firefox:</b> <a href="https://www.mozilla.org/en-US/firefox/products/">Mozilla Firefox</a>
+						<b>Mozilla Firefox:</b> <a href="https://www.mozilla.org/en-US/firefox/products/" target="_blank">Mozilla Firefox</a>
 					</li>
 					<li>
-						<b>Opera:</b> <a href="http://www.opera.com/zh-cn/download">Opera</a>
+						<b>Opera:</b> <a href="http://www.opera.com/zh-cn/download" target="_blank">Opera</a>
 					</li>
 				</ul>
 			</p>
