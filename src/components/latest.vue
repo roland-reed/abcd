@@ -79,7 +79,7 @@
 						}
 					})
 					.catch(() => {
-						this.loadMessage = config.networkError;
+						this.loadMessage = config.msg.networkError;
 						this.ifShowMessage = true;
 						this.ifShowLoadMore = false;
 					})
