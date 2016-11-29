@@ -49,7 +49,12 @@
 			loadEarliestMonth() {
 				this.archiveList = [];
 
-				qwest.get(`/abcd/archive/earliestMonth/${this.sourceId}`, null, {
+				// 若上一个请求未结束则先结束上一个请求
+				if (this.runningXHR && this.runningXHR.readyState !== 4) {
+					this.runningXHR.abort();
+				}
+
+				this.runningXHR = qwest.get(`/abcd/archive/earliestMonth/${this.sourceId}`, null, {
 						timeout: config.timeout
 					})
 					.then((xhr, res) => {
