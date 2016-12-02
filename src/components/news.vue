@@ -34,6 +34,8 @@
 </template>
 
 <script>
+	import Vue from 'vue';
+
 	export default {
 		name: 'news',
 		data() {
@@ -106,6 +108,15 @@
 			} else if (window.localStorage.autoPlay === 'false') {
 				this.autoPlay = false;
 			}
+
+			// 响应自动播放切换
+			window.addEventListener('storage', function(e){
+				if (e.newValue === 'true') {
+					this.autoPlay = true;
+				} else if (e.newValue === 'false') {
+					this.autoPlay = false;
+				}
+			});
 		},
 		computed: {
 			newsStyle() {
@@ -153,6 +164,11 @@
 			showMore() {
 				this.ifShowPreview = false;
 				this.methodsFloating = true;
+
+				// 触发视图更新，若不需浮动操作栏则清除浮动操作栏
+				Vue.nextTick(() => {
+					window.eventHub.$emit('scroll');
+				});
 				
 				if (this.autoPlay) {
 					window.eventHub.$emit('loadAudio', this.audioSrc);

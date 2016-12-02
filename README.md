@@ -13,6 +13,8 @@ You can view this project at [ABCD](https://rolandreed.cn/abcd)
 ```npm run build``` Build project to /dist.
 
 ## CHANGELOG
+- 2016/12/02
+	1. Minor bug fixed.
 - 2016/11/29
 	1. Cancel last unfinished ajax request in **LATEST** and **ARCHIVE** page.
 - 2016/11/28

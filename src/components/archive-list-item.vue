@@ -14,6 +14,7 @@
 </template>
 
 <script>
+	import Vue from 'vue';
 	import newsList from './news-list';
 	import qwest from 'qwest';
 	import config from '../config/config';
@@ -79,6 +80,11 @@
 		methods: {
 			toggleList() {
 				this.showList = !this.showList;
+
+				// 如果内容在可视范围之内则不浮动显示月份标签
+				Vue.nextTick(() => {
+					window.eventHub.$emit('scroll');
+				});
 
 				if (!this.loaded) {
 					let month = this.archive.month < 10 ? '0' + this.archive.month : this.archive.month;
