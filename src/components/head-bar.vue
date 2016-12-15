@@ -229,7 +229,7 @@
 				window.eventHub.$emit('search');
 			},
 			changeSource: function(e, sourceId) {
-				this.sourceList[this.currentSourceId].size['source-li-current'] = false;
+				this.sourceList[window.state.sourceId].size['source-li-current'] = false;
 
 				if (this.sourceList[sourceId].size) {
 					this.sourceList[sourceId].size['source-li-current'] = true;
@@ -239,9 +239,9 @@
 					});
 				}
 
-				this.currentSourceId = sourceId;
+				window.state.sourceId = sourceId;
 
-				window.eventHub.$emit('changesource', sourceId);
+				window.eventHub.$emit('changesource');
 			},
 			initAudio: function() {
 				let audio = new Audio();

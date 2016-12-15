@@ -62,6 +62,10 @@
 
 			window.eventHub = new Vue();
 
+			window.state = {
+				sourceId: 0
+			};
+
 			window.addEventListener('scroll', (e) => {
 				window.eventHub.$emit('scroll', e);
 			});

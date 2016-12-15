@@ -25,11 +25,10 @@
 			});
 
 			// 当更换来源时重新载入新闻
-			window.eventHub.$on('changesource', sourceId => {
+			window.eventHub.$on('changesource', () => {
 				if (this.currentView === 'archive') {
 					this.ifShowMessage = true;
 					this.loadMessage = config.msg.archiveLoading;
-					this.sourceId = sourceId;
 					this.loadEarliestMonth();
 				}
 			});
@@ -38,7 +37,6 @@
 		},
 		data() {
 			return {
-				sourceId: 0,
 				currentView: 'archive',
 				ifShowMessage: true,
 				loadMessage: config.msg.archiveLoading,
@@ -54,7 +52,7 @@
 					this.runningXHR.abort();
 				}
 
-				this.runningXHR = qwest.get(`/abcd/archive/earliestMonth/${this.sourceId}`, null, {
+				this.runningXHR = qwest.get(`/abcd/archive/earliestMonth/${window.state.sourceId}`, null, {
 						timeout: config.timeout
 					})
 					.then((xhr, res) => {

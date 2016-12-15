@@ -26,17 +26,16 @@
 				this.currentView = view;
 			});
 
-			window.eventHub.$on('changesource', sourceId => {
+			window.eventHub.$on('changesource', () => {
 				if (this.currentView === 'latest') {
 					this.isLoading = true;
 					this.ifShowMessage = true;
 					this.loadMessage = 'Loading...';
-					this.loadNewsList(sourceId);
-					this.sourceId = sourceId;
+					this.loadNewsList();
 				}
 			});
 
-			this.loadNewsList(0);
+			this.loadNewsList();
 		},
 		mounted() {
 			let loadMoreNode = document.querySelector('#latest-load-more');
@@ -56,12 +55,11 @@
 				loadMessage: config.msg.loading,
 				loadMoreMessage: config.loadMore,
 				isLoading: false,
-				sourceId: 0,
 				newsList: []
 			};
 		},
 		methods: {
-			loadNewsList(sourceId) {
+			loadNewsList() {
 				this.newsList = [];
 				this.ifShowLoadMore = false;
 
@@ -70,7 +68,7 @@
 					this.runningXHR.abort();
 				}
 
-				this.runningXHR = qwest.get(`/abcd/latest/${sourceId}`, null, {
+				this.runningXHR = qwest.get(`/abcd/latest/${window.state.sourceId}`, null, {
 						timeout: config.timeout
 					})
 					.then((xhr, res) => {

@@ -71,10 +71,6 @@
 			archive: {
 				type: Object,
 				required: true
-			},
-			sourceId: {
-				type: Number,
-				required: true
 			}
 		},
 		methods: {
@@ -88,7 +84,7 @@
 
 				if (!this.loaded) {
 					let month = this.archive.month < 10 ? '0' + this.archive.month : this.archive.month;
-					this.loadNewsList(this.sourceId, this.archive.year.toString() + '-' + month);
+					this.loadNewsList(window.state.sourceId, this.archive.year.toString() + '-' + month);
 				}
 			},
 			loadNewsList(sourceId, month) {
