@@ -4,7 +4,6 @@
 		<archive-list-item
 		v-for="archive in archiveList"
 		:archive="archive"
-		:source-id="sourceId"
 		:if-show-message="ifShowMessage"></archive-list-item>
 	</div>
 </template>
