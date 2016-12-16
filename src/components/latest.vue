@@ -98,7 +98,7 @@
 				this.isLoading = true;
 				this.loadMoreMessage = config.msg.loading;
 
-				qwest.get(`/abcd/latest/${this.sourceId}`, {
+				qwest.get(`/abcd/latest/${window.state.sourceId}`, {
 						offset: this.newsList.length
 					}, {
 						timeout: config.timeout

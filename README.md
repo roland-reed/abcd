@@ -13,6 +13,8 @@ You can view this project at [ABCD](https://rolandreed.cn/abcd)
 ```npm run build``` Build project to /dist.
 
 ## CHANGELOG
+- 2016/12/27
+	1. Minor bug fixed.
 - 2016/12/16
 	1. Fixed error of **LATEST** source id is not equal to the **ARCHIVE** page.
 - 2016/12/02
