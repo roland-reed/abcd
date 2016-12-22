@@ -140,7 +140,7 @@
 </script>
 
 <style lang="less">
-	@import '../static/reset.less';
+	@import 'style/reset.less';
 	@import '../static/icons/style.less';
 
 	@base-font: 'Hiragino Sans GB','Noto Sans CJK SC','Heiti SC','Microsoft Yahei','WenQuanYi Microhei', sans-serif;

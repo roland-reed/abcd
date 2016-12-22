@@ -38,6 +38,7 @@
 			switchState(key) {
 				this[key] = !this[key];
 				window.localStorage[key] = this[key];
+				window.eventHub.$emit('updateautoplay');
 			}
 		},
 		created() {

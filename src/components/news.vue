@@ -102,21 +102,12 @@
 				}
 			});
 
-			// 设置是否自动播放
-			if (window.localStorage.autoPlay === 'true') {
-				this.autoPlay = true;
-			} else if (window.localStorage.autoPlay === 'false') {
-				this.autoPlay = false;
-			}
-
-			// 响应自动播放切换
-			window.addEventListener('storage', function(e){
-				if (e.newValue === 'true') {
-					this.autoPlay = true;
-				} else if (e.newValue === 'false') {
-					this.autoPlay = false;
-				}
+			window.eventHub.$on('updateautoplay', () => {
+				this.setAutoPlay();
 			});
+
+			// 设置是否自动播放
+			this.setAutoPlay();
 		},
 		computed: {
 			newsStyle() {
@@ -191,6 +182,13 @@
 			},
 			closeTip() {
 				window.eventHub.$emit('closeTip');
+			},
+			setAutoPlay() {
+				if (window.localStorage.autoPlay === 'true') {
+					this.autoPlay = true;
+				} else if (window.localStorage.autoPlay === 'false') {
+					this.autoPlay = false;
+				}
 			}
 		}
 	};

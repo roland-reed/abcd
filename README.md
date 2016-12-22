@@ -13,7 +13,10 @@ You can view this project at [ABCD](https://rolandreed.cn/abcd)
 ```npm run build``` Build project to /dist.
 
 ## CHANGELOG
-- 2016/12/27
+- 2016/12/22
+	1. Fixed a bug of tab display error.
+	2. Fixed a bug of reloading audio that is playing.
+- 2016/12/17
 	1. Minor bug fixed.
 - 2016/12/16
 	1. Fixed error of **LATEST** source id is not equal to the **ARCHIVE** page.

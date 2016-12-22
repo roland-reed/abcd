@@ -187,7 +187,10 @@
 
 			// 监听loadAudio事件
 			window.eventHub.$on('loadAudio', src => {
-				this.loadAudio(src);
+				if (src !== this.audio.src) {
+					this.loadAudio(src);
+					this.audio.src = src;
+				}
 			});
 		},
 		mounted: function() {
@@ -232,7 +235,7 @@
 				this.sourceList[window.state.sourceId].size['source-li-current'] = false;
 
 				if (this.sourceList[sourceId].size) {
-					this.sourceList[sourceId].size['source-li-current'] = true;
+					Vue.set(this.sourceList[sourceId].size, 'source-li-current', true);
 				} else {
 					Vue.set(this.sourceList[sourceId], 'size', {
 						'source-li-current': true
