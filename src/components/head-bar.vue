@@ -98,11 +98,6 @@
 				clientType: 'mobile',
 				currentSourceId: 0,
 				clientWidth: document.documentElement.clientWidth,
-				playButtonClass: {
-					'icon-play': true,
-					'icon-pause': false,
-					'icon-loading': false
-				},
 				sourceList: [{
 					name: 'ABC',
 					id: 0,

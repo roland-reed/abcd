@@ -42,16 +42,7 @@
 			return {
 				ifShowPreview: true,
 				ifShowChinese: false,
-				methodsFloating: false,
-				newsStyle: {
-					'cursor': 'pointer'
-				},
-				newsClass: {
-					'news-collapse': true
-				},
-				methodsClass: {
-					'methods-floating': false
-				}
+				methodsFloating: false
 			};
 		},
 		props: {

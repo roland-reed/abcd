@@ -51,10 +51,7 @@
 		name: 'sidebar',
 		data() {
 			return {
-				title: 'ABCD',
-				sidebarClass: {
-					'sidebar-show': false
-				}
+				title: 'ABCD'
 			};
 		},
 		props: {
